@@ -3,6 +3,7 @@ package main;
 import models.ContaBancaria;
 import services.BuscarConta;
 import services.CadastrarConta;
+import services.DepositoConta;
 import services.ExibirContas;
 
 import javax.swing.*;
@@ -28,16 +29,13 @@ public class Main {
                 public void actionPerformed(ActionEvent e) {
                     String opcaoSelecionada = ((JButton) e.getSource()).getText();
                     switch (opcaoSelecionada) {
-                        case "Opção 1" -> {
-                            contas.addAll(CadastrarConta.cadastrar());
-                        }
+                        case "Opção 1" -> contas.addAll(CadastrarConta.cadastrar());
 
-                        case "Opção 2" -> {
-                            ExibirContas.exibir(contas);
-                        }
+                        case "Opção 2" -> ExibirContas.exibir(contas);
 
                         case "Opção 3" -> {
-                            System.out.println(BuscarConta.buscar(contas).toString());
+                            ContaBancaria conta = BuscarConta.buscar(contas);
+                            DepositoConta.depositar(conta);
                         }
 
                         case "Opção 4" -> System.out.println("Opção 4 selecionada");
