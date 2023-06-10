@@ -16,6 +16,7 @@ public class DepositoConta {
             }
         } while (valor < 10);
 
-        conta.setSaldo(valor);
+        double saldoAtual = conta.getSaldo();
+        conta.setSaldo(valor + saldoAtual);
     }
 }
