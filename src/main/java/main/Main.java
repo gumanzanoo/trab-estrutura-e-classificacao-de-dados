@@ -35,7 +35,9 @@ public class Main {
             botao.addActionListener(e -> {
                 switch (opcaoIndex) {
                     case 0 -> contas.addAll(CadastrarConta.cadastrar());
-                    case 1 -> ExibirContas.exibir(contas);
+                    case 1 -> {
+                        ExibirContas.exibir(contas);
+                    }
                     case 2 -> {
                         ContaBancaria conta = BuscarConta.buscar(contas);
                         TransacoesConta.transacao(conta);

@@ -57,6 +57,6 @@ public class ExibirContas {
             sb.append(conta.toString()).append("\n");
         }
 
-        JOptionPane.showMessageDialog(null, sb.toString(), "Contas Bancárias Ordenadas", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, sb.toString(), "Contas Bancárias", JOptionPane.INFORMATION_MESSAGE);
     }
 }

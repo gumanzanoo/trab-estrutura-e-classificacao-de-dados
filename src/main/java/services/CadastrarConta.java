@@ -3,50 +3,56 @@ package services;
 import models.ContaBancaria;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class CadastrarConta {
     public static ArrayList<ContaBancaria> cadastrar() {
         ArrayList<ContaBancaria> contas = new ArrayList<>();
+        String[] opcoesCadastro = {"Confirmar", "Cancelar"};
+        String[] opcoesMaisUmCadastro = {"Sim", "Nao"};
 
-        int qtdContas = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Informe quantas contas deseja cadastrar: "));
-
-        int option;
+        int novoCadastro = 1;
         do {
-            option = JOptionPane.showConfirmDialog(null,
-                    "Deseja mesmo cadastrar " + qtdContas + " contas?");
-            if (option == 1) {
-                qtdContas = Integer.parseInt(JOptionPane.showInputDialog(null,
-                        "Confirme novamente quantas contas deseja cadastrar: "));
+            JPanel panel = new JPanel();
+            panel.setLayout(new GridLayout(3, 2));
 
-                continue;
-            } else if (option == 2) {
-                System.exit(0);
+
+            JTextField textField1 = new JTextField();
+            JTextField textField2 = new JTextField();
+            JTextField textField3 = new JTextField();
+
+            panel.add(new JLabel("N° Conta: "));
+            panel.add(textField1);
+            panel.add(new JLabel("Nome do titular: "));
+            panel.add(textField2);
+            panel.add(new JLabel("Saldo inicial: "));
+            panel.add(textField3);
+
+            int result = JOptionPane.showOptionDialog(null, panel, "Entrada de Dados",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoesCadastro, null);
+
+            if (result == JOptionPane.OK_OPTION) {
+                int numConta = Integer.parseInt(textField1.getText());
+                String nmTitular = textField2.getText();
+                double saldo = Double.parseDouble(textField3.getText());
+
+                ContaBancaria contaBancaria = new ContaBancaria();
+                contaBancaria.setNumConta(numConta);
+                contaBancaria.setNmTitular(nmTitular);
+                contaBancaria.setSaldo(saldo);
+
+                contas.add(contaBancaria);
+            } else {
+                return contas;
             }
-        } while (option == 1);
 
-        int i = 0;
-        do {
-            int numConta = Integer.parseInt(JOptionPane.showInputDialog(null,
-                    "Informe o número da " + (i+1) + "ª" + " conta:"));
-
-            String nmTitular = JOptionPane.showInputDialog(null,
-                    "Informe o nome do titular:");
-
-            int saldo = Integer.parseInt(JOptionPane.showInputDialog(null,
-                    "Informe o saldo inicial:"));
-
-            ContaBancaria contaBancaria = new ContaBancaria();
-            contaBancaria.setNumConta(numConta);
-            contaBancaria.setNmTitular(nmTitular);
-            contaBancaria.setSaldo(saldo);
-
-            contas.add(contaBancaria);
-
-            i++;
-        } while (i < qtdContas);
+            novoCadastro = JOptionPane.showOptionDialog(null, null, "Cadastrar mais uma conta?",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoesMaisUmCadastro, null);
+        } while (novoCadastro == 0);
 
         return contas;
     }
+
+
 }

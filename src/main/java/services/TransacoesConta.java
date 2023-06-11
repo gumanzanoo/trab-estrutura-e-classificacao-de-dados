@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class TransacoesConta {
     public static void transacao(ContaBancaria conta) {
-        String[] opcoes = {"Sacar", "Depositar"};
+        String[] opcoes = {"Depositar", "Sacar"};
 
         int opcao = JOptionPane.showOptionDialog(null, "Selecione a transação que deseja realizar",
                 "Transação", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
