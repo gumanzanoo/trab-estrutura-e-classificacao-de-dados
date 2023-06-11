@@ -7,8 +7,6 @@ import services.TransacoesConta;
 import services.ExibirContas;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Main {
@@ -26,7 +24,7 @@ public class Main {
 
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10); // Espaçamento entre os botões
+        gbc.insets = new Insets(10, 10, 10, 10);
 
         for (int i = 0; i < opcoes.length; i++) {
             final int opcaoIndex = i;
