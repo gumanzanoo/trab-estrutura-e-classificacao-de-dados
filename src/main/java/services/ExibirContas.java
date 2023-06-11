@@ -9,14 +9,14 @@ public class ExibirContas {
     public static void exibir(ArrayList<ContaBancaria> contas) {
         String[] opcoes = {"Por Saldo", "Por N°"};
 
-        int escolha = JOptionPane.showOptionDialog(null, "Selecione um método de ordenação",
+        int opcao = JOptionPane.showOptionDialog(null, "Selecione um método de ordenação",
                 "Exibir Contas", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, opcoes, opcoes[0]);
 
         int n = contas.size();
         boolean troca;
 
-        if (escolha == 0) {
+        if (opcao == 0) {
             for (int i = 0; i < n - 1; i++) {
                 troca = false;
 
@@ -33,7 +33,7 @@ public class ExibirContas {
                     break;
                 }
             }
-        } else if (escolha == 1) {
+        } else if (opcao == 1) {
             for (int i = 0; i < n - 1; i++) {
                 troca = false;
 
